@@ -40,8 +40,40 @@ let pageIndex = 0;
 //
 
 // function and event listeners to switch between pages: search page and favorites page//
-function startSearch(){
+function startSearch() {
+  //click on the taco button, takes you to search page
+  $('#start-button').click(function() {
+    const search = userPage [pageIndex];
+    console.log('currentPageIndex = ' + pageIndex);
+    $('#start-page').html(search['page']);
+    // the Chews'n ones button takes you to a favorites page
+    $('.favs-button').click(function(){
+      const nextPageIndex = pageIndex + 1;
+      nextPage(nextPageIndex);
+    })
+  });
+}
 
+//output of the favorites page
+function nextPage(index){
+  const search = userPage [index];
+  console.log('currentPageIndex = ' + pageIndex);
+  $('#start-page').html(search['page']);
+      $('.final').click(function(){
+      const nextPageIndex = pageIndex + 1;
+      nextPage(nextPageIndex);
+});
+}
+//Another page to show final results
+function nextPage(index){
+  const search = userPage [index];
+  $('#start-page').html(search['page']);
+      $('.final').click(function(){
+      const nextPageIndex = index + 1;
+      nextPage(nextPageIndex);
+      });
+
+ 
 }
 // Render Results function//
 function renderResults(result){
@@ -52,4 +84,5 @@ function renderResults(result){
 
 //button that takes you back to search page//
 
-
+//runs the buttons
+startSearch();
